@@ -25,7 +25,7 @@ const generateEmptryGrid = () => {
 
 function App() {
   const [grid, setGrid] = useState(() => {
-     return generateEmptryGrid()
+    return generateEmptryGrid()
   });
 
   const [running, setRunning] = useState(false);
@@ -60,7 +60,7 @@ function App() {
       });
     });
 
-    setTimeout(runSimulation, 300)
+    setTimeout(runSimulation, 200)
   }, []);
 
   return (
@@ -80,6 +80,24 @@ function App() {
           }
         }}
       >{running ? 'Stop' : 'Start'}</button>
+      <button
+        style={{
+          margin: 20,
+          marginBottom: 3,
+          backgroundColor: 'green',
+          color: 'yellow'
+        }}
+        onClick={() => {
+          const rows = [];
+          for (let i = 0; i < numRows; i++) {
+            rows.push(Array.from(Array(numCols), () => Math.random() > 0.7 ? 1 : 0));
+          }
+
+          setGrid(rows);
+        }}
+      >
+        Random
+      </button>
       <button
         style={{
           margin: 20,
