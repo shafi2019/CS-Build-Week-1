@@ -15,21 +15,24 @@ const operations = [
   [-1, 0]
 ];
 
+const generateEmptryGrid = () => {
+  const rows = [];
+  for (let i = 0; i < numRows; i++) {
+    rows.push(Array.from(Array(numCols), () => 0))
+  }
+  return rows;
+}
 
 function App() {
   const [grid, setGrid] = useState(() => {
-    const rows = [];
-    for (let i = 0; i < numRows; i++) {
-      rows.push(Array.from(Array(numCols), () => 0))
-    }
-    return rows;
+     return generateEmptryGrid()
   });
-  
+
   const [running, setRunning] = useState(false);
 
   const runningRef = useRef(running);
   runningRef.current = running
-  
+
   const runSimulation = useCallback(() => {
     if (!runningRef.current) {
       return;
@@ -43,7 +46,7 @@ function App() {
               const newI = i + x;
               const newK = k + y;
               if (newI >= 0 && newI < numRows && newK >= 0 && newK < numCols) {
-                neighbors += g[newI][newK] 
+                neighbors += g[newI][newK]
               }
             })
 
@@ -56,27 +59,40 @@ function App() {
         }
       });
     });
-  
-    setTimeout(runSimulation, 200)
+
+    setTimeout(runSimulation, 300)
   }, []);
 
   return (
     <>
       <button
-      style={{
-        margin: 20,
-        marginBottom: 3,
-        backgroundColor: 'green',
-        color: 'yellow'
-      }}
-      onClick={() => {
-        setRunning(!running);
-        if (!running) {
-          runningRef.current = true;
-          runSimulation();
-        }
-      }}
+        style={{
+          margin: 20,
+          marginBottom: 3,
+          backgroundColor: 'green',
+          color: 'yellow'
+        }}
+        onClick={() => {
+          setRunning(!running);
+          if (!running) {
+            runningRef.current = true;
+            runSimulation();
+          }
+        }}
       >{running ? 'Stop' : 'Start'}</button>
+      <button
+        style={{
+          margin: 20,
+          marginBottom: 3,
+          backgroundColor: 'green',
+          color: 'yellow'
+        }}
+        onClick={() => {
+          setGrid(generateEmptryGrid())
+        }}
+      >
+        Clear
+      </button>
       <div style={{
         margin: 20,
         display: 'grid',
