@@ -99,17 +99,18 @@ function App() {
         width: '62%'
       }}
     >
-      <h2
+      <h1
         style={{
           margin: 20,
-          width: '70%',
-          fontFamily: 'sansSerif'
+          width: '100%',
+          fontFamily: 'Monospace',
+          fontSize: '38px'
         }}
-      >{running ? 'Shafi Game of live is running now. . . . .' : 'Shafi Game of live'}</h2>
+      >{running ? 'Shafi Game of live is running now. . . . .' : 'Shafi Game of live'}</h1>
       <button
         style={{
           margin: 20,
-          backgroundColor: 'steelBlue',
+          backgroundColor: '#000099',
           color: 'honeyDew',
           padding: 5,
           width: 100,
@@ -129,7 +130,7 @@ function App() {
       <button
         style={{
           marginRight: 20,
-          backgroundColor: 'steelBlue',
+          backgroundColor: '#000099',
           color: 'honeyDew',
           padding: 5,
           width: 100,
@@ -150,7 +151,7 @@ function App() {
       </button>
       <button
         style={{
-          backgroundColor: 'steelBlue',
+          backgroundColor: '#000099',
           color: 'honeyDew',
           padding: 5,
           width: 100,
